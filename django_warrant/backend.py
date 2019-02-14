@@ -72,7 +72,7 @@ class AbstractCognitoBackend(ModelBackend):
             secret_key=getattr(settings, 'AWS_SECRET_ACCESS_KEY', None),
             username=username)
         try:
-            cognito_user.authenticate(password)
+            cognito_user.authenticate_non_srp(password)
         except (Boto3Error, ClientError) as e:
             return self.handle_error_response(e)
         user = cognito_user.get_user()
