@@ -32,7 +32,7 @@ class CognitoUser(Cognito):
                 extra_attrs.update({k: user_attrs.pop(k, None)})
         if getattr(settings, 'COGNITO_CREATE_UNKNOWN_USERS', True):
             user, created = CognitoUser.user_class.objects.update_or_create(
-                username=username,
+                email=username,
                 defaults=user_attrs)
         else:
             try:
