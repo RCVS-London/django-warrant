@@ -100,7 +100,7 @@ class CognitoBackend(AbstractCognitoBackend):
         refresh token in the session.
         """
         user = super(CognitoBackend, self).authenticate(
-            username=username, password=password)
+            email=username, password=password)
         if user:
             request.session['ACCESS_TOKEN'] = user.access_token
             request.session['ID_TOKEN'] = user.id_token
